@@ -3,8 +3,8 @@ Version:        1.0.0
 Release:        1%{?dist}
 Summary:        Dark-mode GTK4 downloader for YouTube and 1800+ sites (yt-dlp GUI)
 License:        MIT
-URL:            https://github.com/sudomastery/youtube-dl-fedora-UI
-Source0:        %{url}/archive/v%{version}/youtube-dl-fedora-UI-%{version}.tar.gz
+URL:            https://github.com/sudomastery/stube
+Source0:        %{url}/archive/v%{version}/stube-%{version}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  desktop-file-utils
@@ -27,10 +27,10 @@ metadata. Can borrow YouTube cookies from Brave, Chrome, Chromium, Edge or
 Firefox to get past bot checks.
 
 %prep
-%autosetup -n youtube-dl-fedora-UI-%{version}
+%autosetup -n stube-%{version}
 
 %install
-install -Dm644 io.github.sudomastery.STube.py %{buildroot}%{_datadir}/stube/stube.py
+install -Dm644 stube.py %{buildroot}%{_datadir}/stube/stube.py
 install -Dm644 io.github.sudomastery.STube.desktop %{buildroot}%{_datadir}/applications/io.github.sudomastery.STube.desktop
 for png in icons/stube-*.png; do
     size=$(basename "$png" .png | cut -d- -f2)
