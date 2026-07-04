@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install VidFetch for the current user (no sudo needed).
+# Install STube for the current user (no sudo needed).
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -15,26 +15,26 @@ if [ ${#missing[@]} -gt 0 ]; then
     sudo dnf install -y "${missing[@]}"
 fi
 
-install -Dm755 vidfetch.py "$HOME/.local/share/vidfetch/vidfetch.py"
+install -Dm755 stube.py "$HOME/.local/share/stube/stube.py"
 # Point Exec at the absolute launcher path so the app grid entry works
 # regardless of the session's PATH.
-sed "s|^Exec=vidfetch|Exec=$HOME/.local/bin/vidfetch|" vidfetch.desktop \
-    > "$HOME/.local/share/applications/vidfetch.desktop"
+sed "s|^Exec=stube|Exec=$HOME/.local/bin/stube|" stube.desktop \
+    > "$HOME/.local/share/applications/stube.desktop"
 for png in icons/downloader-*.png; do
     size=$(basename "$png" .png | cut -d- -f2)
     install -Dm644 "$png" \
-        "$HOME/.local/share/icons/hicolor/${size}x${size}/apps/vidfetch.png"
+        "$HOME/.local/share/icons/hicolor/${size}x${size}/apps/stube.png"
 done
 
 # Convenience launcher on PATH
 install -d "$HOME/.local/bin"
-cat > "$HOME/.local/bin/vidfetch" <<'EOF'
+cat > "$HOME/.local/bin/stube" <<'EOF'
 #!/usr/bin/env bash
-exec /usr/bin/python3 "$HOME/.local/share/vidfetch/vidfetch.py" "$@"
+exec /usr/bin/python3 "$HOME/.local/share/stube/stube.py" "$@"
 EOF
-chmod +x "$HOME/.local/bin/vidfetch"
+chmod +x "$HOME/.local/bin/stube"
 
 gtk4-update-icon-cache -q "$HOME/.local/share/icons/hicolor" 2>/dev/null || true
 update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
 
-echo "Installed. Launch with 'vidfetch' or from the app grid (VidFetch)."
+echo "Installed. Launch with 'stube' or from the app grid (STube)."

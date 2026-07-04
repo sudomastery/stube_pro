@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.sudomastery.VidFetch</id>
+  <id>io.github.sudomastery.STube</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <name>STube Youtube Downloader</name>
   <summary>Youtube Video downloader for Fedora</summary>
   <description>
     <p>
-      VidFetch is a simple dark-mode downloader for YouTube and about 1800
+      STube is a simple dark-mode downloader for YouTube and about 1800
       other sites, powered by yt-dlp. Paste a link, preview the video, pick a
       quality (up to 4K) or extract audio to MP3/M4A/Opus, and watch the
       queue with live progress. Supports playlists and embedding subtitles,
       thumbnails and metadata.
     </p>
     <p>
-      To get past YouTube's bot checks, VidFetch can borrow the YouTube
+      To get past YouTube's bot checks, STube can borrow the YouTube
       cookies from a browser on your computer (Brave, Chrome, Chromium, Edge
       or Firefox). Cookies never leave your machine.
     </p>
   </description>
-  <launchable type="desktop-id">vidfetch.desktop</launchable>
+  <launchable type="desktop-id">stube.desktop</launchable>
   <url type="homepage">https://github.com/sudomastery/youtube-dl-fedora-UI</url>
   <url type="bugtracker">https://github.com/sudomastery/youtube-dl-fedora-UI/issues</url>
   <developer id="io.github.sudomastery">

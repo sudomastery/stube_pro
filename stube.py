@@ -18,7 +18,7 @@ from gi.repository import Adw, Gdk, GLib, Gio, Gtk  # noqa: E402
 import yt_dlp  # noqa: E402
 from yt_dlp.cookies import extract_cookies_from_browser  # noqa: E402
 
-APP_ID = "io.github.sudomastery.VidFetch"
+APP_ID = "io.github.sudomastery.STube"
 APP_NAME = "STube"
 ACCENT = "#E2603F"
 COFFEE_URL = "https://www.buymeacoffee.com/sudomastery"
@@ -51,7 +51,15 @@ VIDEO_QUALITIES = [
     ("480p", "bv*[height<=480]+ba/b[height<=480]"),
 ]
 
-CONFIG_DIR = os.path.join(GLib.get_user_config_dir(), "vidfetch")
+CONFIG_DIR = os.path.join(GLib.get_user_config_dir(), "stube")
+
+# one-time migration from the app's old name
+_OLD_CONFIG_DIR = os.path.join(GLib.get_user_config_dir(), "vidfetch")
+if os.path.isdir(_OLD_CONFIG_DIR) and not os.path.isdir(CONFIG_DIR):
+    try:
+        os.rename(_OLD_CONFIG_DIR, CONFIG_DIR)
+    except OSError:
+        pass
 HISTORY_FILE = os.path.join(CONFIG_DIR, "history.json")
 SETTINGS_FILE = os.path.join(CONFIG_DIR, "settings.json")
 
@@ -821,7 +829,7 @@ class MainWindow(Adw.ApplicationWindow):
     def notify_desktop(self, title, body):
         n = Gio.Notification.new(title)
         n.set_body(body)
-        n.set_icon(Gio.ThemedIcon.new("vidfetch"))
+        n.set_icon(Gio.ThemedIcon.new("stube"))
         self.get_application().send_notification(None, n)
 
     # ------------------------------------------------------------ coffee

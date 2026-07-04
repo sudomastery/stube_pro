@@ -1,4 +1,4 @@
-Name:           vidfetch
+Name:           stube
 Version:        1.0.0
 Release:        1%{?dist}
 Summary:        Dark-mode GTK4 downloader for YouTube and 1800+ sites (yt-dlp GUI)
@@ -19,7 +19,7 @@ Requires:       python3-secretstorage
 Requires:       /usr/bin/ffmpeg
 
 %description
-VidFetch is a simple dark-mode downloader for YouTube and about 1800 other
+STube is a simple dark-mode downloader for YouTube and about 1800 other
 sites, powered by yt-dlp. Paste a link, preview the video, pick a quality
 (up to 4K) or extract audio to MP3/M4A/Opus, and watch the queue with live
 progress. Supports playlists and embedding subtitles, thumbnails and
@@ -30,33 +30,33 @@ Firefox to get past bot checks.
 %autosetup -n youtube-dl-fedora-UI-%{version}
 
 %install
-install -Dm644 vidfetch.py %{buildroot}%{_datadir}/vidfetch/vidfetch.py
-install -Dm644 vidfetch.desktop %{buildroot}%{_datadir}/applications/vidfetch.desktop
+install -Dm644 stube.py %{buildroot}%{_datadir}/stube/stube.py
+install -Dm644 stube.desktop %{buildroot}%{_datadir}/applications/stube.desktop
 for png in icons/downloader-*.png; do
     size=$(basename "$png" .png | cut -d- -f2)
-    install -Dm644 "$png" %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/vidfetch.png
+    install -Dm644 "$png" %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/stube.png
 done
-install -Dm644 io.github.sudomastery.VidFetch.metainfo.xml %{buildroot}%{_metainfodir}/io.github.sudomastery.VidFetch.metainfo.xml
+install -Dm644 io.github.sudomastery.STube.metainfo.xml %{buildroot}%{_metainfodir}/io.github.sudomastery.STube.metainfo.xml
 
 install -d %{buildroot}%{_bindir}
-cat > %{buildroot}%{_bindir}/vidfetch <<'EOF'
+cat > %{buildroot}%{_bindir}/stube <<'EOF'
 #!/usr/bin/bash
-exec /usr/bin/python3 /usr/share/vidfetch/vidfetch.py "$@"
+exec /usr/bin/python3 /usr/share/stube/stube.py "$@"
 EOF
-chmod 755 %{buildroot}%{_bindir}/vidfetch
+chmod 755 %{buildroot}%{_bindir}/stube
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/vidfetch.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.sudomastery.VidFetch.metainfo.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/stube.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.sudomastery.STube.metainfo.xml
 
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/vidfetch
-%{_datadir}/vidfetch/
-%{_datadir}/applications/vidfetch.desktop
-%{_datadir}/icons/hicolor/*/apps/vidfetch.png
-%{_metainfodir}/io.github.sudomastery.VidFetch.metainfo.xml
+%{_bindir}/stube
+%{_datadir}/stube/
+%{_datadir}/applications/stube.desktop
+%{_datadir}/icons/hicolor/*/apps/stube.png
+%{_metainfodir}/io.github.sudomastery.STube.metainfo.xml
 
 %changelog
 * Sat Jul 04 2026 sudomastery <koigu80@gmail.com> - 1.0.0-1

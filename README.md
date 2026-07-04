@@ -41,13 +41,13 @@ they're missing, then puts STube in your app grid and on your `$PATH`.
 Launch **STube Youtube Downloader** from the app grid, or:
 
 ```bash
-vidfetch
+stube
 ```
 
 Or straight from the repo without installing:
 
 ```bash
-/usr/bin/python3 vidfetch.py
+/usr/bin/python3 stube.py
 ```
 
 > Note: it deliberately uses `/usr/bin/python3` (not pyenv/conda pythons)
@@ -55,16 +55,16 @@ Or straight from the repo without installing:
 
 ## Packaging
 
-`vidfetch.spec` builds a native RPM:
+`stube.spec` builds a native RPM:
 
 ```bash
-rpmbuild -ba vidfetch.spec
+rpmbuild -ba stube.spec
 ```
 
 ## Uninstall
 
 ```bash
-rm -rf ~/.local/share/vidfetch ~/.local/bin/vidfetch \
-       ~/.local/share/applications/vidfetch.desktop \
-       ~/.local/share/icons/hicolor/*/apps/vidfetch.png
+rm -rf ~/.local/share/stube ~/.local/bin/stube \
+       ~/.local/share/applications/stube.desktop \
+       ~/.local/share/icons/hicolor/*/apps/stube.png
 ```
