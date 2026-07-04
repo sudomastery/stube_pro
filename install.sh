@@ -16,8 +16,15 @@ if [ ${#missing[@]} -gt 0 ]; then
 fi
 
 install -Dm755 vidfetch.py "$HOME/.local/share/vidfetch/vidfetch.py"
-install -Dm644 vidfetch.desktop "$HOME/.local/share/applications/vidfetch.desktop"
-install -Dm644 vidfetch.svg "$HOME/.local/share/icons/hicolor/scalable/apps/vidfetch.svg"
+# Point Exec at the absolute launcher path so the app grid entry works
+# regardless of the session's PATH.
+sed "s|^Exec=vidfetch|Exec=$HOME/.local/bin/vidfetch|" vidfetch.desktop \
+    > "$HOME/.local/share/applications/vidfetch.desktop"
+for png in icons/downloader-*.png; do
+    size=$(basename "$png" .png | cut -d- -f2)
+    install -Dm644 "$png" \
+        "$HOME/.local/share/icons/hicolor/${size}x${size}/apps/vidfetch.png"
+done
 
 # Convenience launcher on PATH
 install -d "$HOME/.local/bin"

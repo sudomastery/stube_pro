@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=VidFetch
-Comment=Download videos and audio with yt-dlp
-Exec=/usr/bin/python3 %h/.local/share/vidfetch/vidfetch.py
+Name=STube Youtube Downloader
+Comment=Youtube Video downloader for Fedora
+Exec=vidfetch
 Icon=vidfetch
 Terminal=false
 Type=Application
 Categories=AudioVideo;Network;
-Keywords=youtube;download;video;yt-dlp;
+Keywords=youtube;download;video;yt-dlp;stube;
