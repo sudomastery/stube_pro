@@ -32,8 +32,10 @@ Firefox to get past bot checks.
 %install
 install -Dm644 stube.py %{buildroot}%{_datadir}/stube/stube.py
 install -Dm644 stube.desktop %{buildroot}%{_datadir}/applications/stube.desktop
-for png in icons/downloader-*.png; do
+for png in icons/stube-*.png; do
     size=$(basename "$png" .png | cut -d- -f2)
+    # hicolor has no 1024x1024 directory; skip that size.
+    [ "$size" = 1024 ] && continue
     install -Dm644 "$png" %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/stube.png
 done
 install -Dm644 io.github.sudomastery.STube.metainfo.xml %{buildroot}%{_metainfodir}/io.github.sudomastery.STube.metainfo.xml

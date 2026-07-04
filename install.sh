@@ -20,8 +20,10 @@ install -Dm755 stube.py "$HOME/.local/share/stube/stube.py"
 # regardless of the session's PATH.
 sed "s|^Exec=stube|Exec=$HOME/.local/bin/stube|" stube.desktop \
     > "$HOME/.local/share/applications/stube.desktop"
-for png in icons/downloader-*.png; do
+for png in icons/stube-*.png; do
     size=$(basename "$png" .png | cut -d- -f2)
+    # hicolor has no 1024x1024 directory; skip that size.
+    [ "$size" = 1024 ] && continue
     install -Dm644 "$png" \
         "$HOME/.local/share/icons/hicolor/${size}x${size}/apps/stube.png"
 done
