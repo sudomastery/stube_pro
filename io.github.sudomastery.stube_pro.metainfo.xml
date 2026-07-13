@@ -20,9 +20,9 @@
     </p>
   </description>
   <launchable type="desktop-id">io.github.sudomastery.stube_pro.desktop</launchable>
-  <url type="homepage">https://github.com/sudomastery/stube-pro</url>
-  <url type="bugtracker">https://github.com/sudomastery/stube-pro/issues</url>
-  <url type="vcs-browser">https://github.com/sudomastery/stube-pro</url>
+  <url type="homepage">https://github.com/sudomastery/stube_pro</url>
+  <url type="bugtracker">https://github.com/sudomastery/stube_pro/issues</url>
+  <url type="vcs-browser">https://github.com/sudomastery/stube_pro</url>
   <developer id="io.github.sudomastery">
     <name>sudomastery</name>
   </developer>
@@ -33,7 +33,7 @@
   <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/sudomastery/stube-pro/main/screenshots/main.png</image>
+      <image>https://raw.githubusercontent.com/sudomastery/stube_pro/main/screenshots/main.png</image>
       <caption>Main window with the download queue</caption>
     </screenshot>
   </screenshots>
@@ -42,11 +42,12 @@
     <category>Network</category>
   </categories>
   <releases>
-    <release version="1.0.2" date="2026-07-13">
+    <release version="1.0.3" date="2026-07-13">
       <description>
-        <p>New application ID for Flathub. No functional changes.</p>
+        <p>New application ID and repository name for Flathub. No functional changes.</p>
       </description>
     </release>
+    <release version="1.0.2" date="2026-07-13"/>
     <release version="1.0.1" date="2026-07-05"/>
     <release version="1.0.0" date="2026-07-04"/>
   </releases>

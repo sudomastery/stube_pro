@@ -62,5 +62,5 @@ modules:
         ${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/apps/io.github.sudomastery.stube_pro.png; done
     sources:
       - type: git
-        url: https://github.com/sudomastery/stube-pro.git
-        tag: v1.0.2
+        url: https://github.com/sudomastery/stube_pro.git
+        tag: v1.0.3

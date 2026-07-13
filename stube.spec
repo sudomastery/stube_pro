@@ -1,9 +1,9 @@
 Name:           stube
-Version:        1.0.1
+Version:        1.0.3
 Release:        1%{?dist}
 Summary:        Dark-mode GTK4 downloader for YouTube and 1800+ sites (yt-dlp GUI)
 License:        MIT
-URL:            https://github.com/sudomastery/stube-pro
+URL:            https://github.com/sudomastery/stube_pro
 Source0:        %{url}/archive/v%{version}/stube-%{version}.tar.gz
 BuildArch:      noarch
 
@@ -27,7 +27,7 @@ metadata. Can borrow YouTube cookies from Brave, Chrome, Chromium, Edge or
 Firefox to get past bot checks.
 
 %prep
-%autosetup -n stube-%{version}
+%autosetup -n stube_pro-%{version}
 
 %install
 install -Dm644 stube.py %{buildroot}%{_datadir}/stube/stube.py
@@ -61,6 +61,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.sudo
 %{_metainfodir}/io.github.sudomastery.stube_pro.metainfo.xml
 
 %changelog
+* Mon Jul 13 2026 sudomastery <koigu80@gmail.com> - 1.0.3-1
+- Rename application ID to io.github.sudomastery.stube_pro
+
 * Sun Jul 05 2026 sudomastery <koigu80@gmail.com> - 1.0.1-1
 - Point Buy Coffee link at Ko-fi
 

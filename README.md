@@ -10,24 +10,24 @@ Built for Fedora, works on GNOME and KDE.
 
 ## Features
 
-- **One-box workflow** — paste a link and hit Download. MP4 video up to
+- **One-box workflow**: paste a link and hit Download. MP4 video up to
   4K (or 1440p / 1080p / 720p / 480p), or audio-only MP3 / WAV
 - **Star your favorite quality** in the dropdown to make it the
   permanent default
-- **My Downloads** — full history of everything you've fetched; click an
+- **My Downloads**: full history of everything you've fetched; click an
   item to play it, hover for open-folder and remove buttons
-- **Bulk Download** — point it at a `.txt` file with one link per line
+- **Bulk Download**: point it at a `.txt` file with one link per line
   and it queues everything, three at a time
-- **Cookies Setup** — borrows YouTube cookies from Brave, Chrome,
+- **Cookies Setup**: borrows YouTube cookies from Brave, Chrome,
   Chromium, Edge or Firefox so YouTube treats downloads like normal
   viewing. Live status icon: green when configured, red when not.
   Cookies never leave your machine
-- **Self-healing downloads** — automatic retries with plain-English
+- **Self-healing downloads**: automatic retries with plain-English
   error messages, and if cookies go stale it finds a working browser by
   itself
 - **Desktop notifications** for finished and failed downloads, with a
   single summary notification for bulk batches
-- **Playlists and embedding** — full-playlist downloads plus subtitle,
+- **Playlists and embedding**: full-playlist downloads plus subtitle,
   thumbnail and metadata embedding under More options
 
 ## Download & Install
@@ -45,11 +45,11 @@ the repo is enabled STube also shows up in GNOME Software / Discover.
 ### Flatpak
 
 Grab the bundle from the
-[latest release](https://github.com/sudomastery/stube-pro/releases/latest)
+[latest release](https://github.com/sudomastery/stube_pro/releases/latest)
 and install it:
 
 ```bash
-flatpak install --user ./STube-1.0.2-x86_64.flatpak
+flatpak install --user ./STube-1.0.3-x86_64.flatpak
 ```
 
 That's it, the required GNOME runtime is fetched from Flathub
@@ -70,7 +70,7 @@ flatpak uninstall --user io.github.sudomastery.stube_pro
 ### From source (Fedora)
 
 ```bash
-git clone https://github.com/sudomastery/stube-pro.git
+git clone https://github.com/sudomastery/stube_pro.git
 cd stube
 ./install.sh
 ```
@@ -111,4 +111,4 @@ rpmbuild -ba stube.spec
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT: see [LICENSE](LICENSE).
