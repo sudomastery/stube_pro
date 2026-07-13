@@ -45,32 +45,32 @@ the repo is enabled STube also shows up in GNOME Software / Discover.
 ### Flatpak
 
 Grab the bundle from the
-[latest release](https://github.com/sudomastery/stube/releases/latest)
+[latest release](https://github.com/sudomastery/stube-pro/releases/latest)
 and install it:
 
 ```bash
-flatpak install --user ./STube-1.0.0-x86_64.flatpak
+flatpak install --user ./STube-1.0.2-x86_64.flatpak
 ```
 
-That's it — the required GNOME runtime is fetched from Flathub
+That's it, the required GNOME runtime is fetched from Flathub
 automatically, and ffmpeg, yt-dlp and everything else is bundled.
 Launch **STube** from the app grid, or:
 
 ```bash
-flatpak run io.github.sudomastery.STube
+flatpak run io.github.sudomastery.stube_pro
 ```
 
 To update, download the new bundle from Releases and run the same
 install command. To uninstall:
 
 ```bash
-flatpak uninstall --user io.github.sudomastery.STube
+flatpak uninstall --user io.github.sudomastery.stube_pro
 ```
 
 ### From source (Fedora)
 
 ```bash
-git clone https://github.com/sudomastery/stube.git
+git clone https://github.com/sudomastery/stube-pro.git
 cd stube
 ./install.sh
 ```
@@ -97,8 +97,8 @@ Uninstall the source install with:
 
 ```bash
 rm -rf ~/.local/share/stube ~/.local/bin/stube \
-       ~/.local/share/applications/io.github.sudomastery.STube.desktop \
-       ~/.local/share/icons/hicolor/*/apps/io.github.sudomastery.STube.png
+       ~/.local/share/applications/io.github.sudomastery.stube_pro.desktop \
+       ~/.local/share/icons/hicolor/*/apps/io.github.sudomastery.stube_pro.png
 ```
 
 ### RPM

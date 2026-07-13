@@ -18,7 +18,7 @@ from gi.repository import Adw, Gdk, GLib, Gio, Gtk  # noqa: E402
 import yt_dlp  # noqa: E402
 from yt_dlp.cookies import extract_cookies_from_browser  # noqa: E402
 
-APP_ID = "io.github.sudomastery.STube"
+APP_ID = "io.github.sudomastery.stube_pro"
 APP_NAME = "STube"
 ACCENT = "#E2603F"
 COFFEE_URL = "https://ko-fi.com/sudomastery"

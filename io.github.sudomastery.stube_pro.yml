@@ -1,4 +1,4 @@
-app-id: io.github.sudomastery.STube
+app-id: io.github.sudomastery.stube_pro
 runtime: org.gnome.Platform
 runtime-version: '50'
 sdk: org.gnome.Sdk
@@ -56,11 +56,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm755 stube.py ${FLATPAK_DEST}/bin/stube
-      - install -Dm644 io.github.sudomastery.STube.desktop -t ${FLATPAK_DEST}/share/applications
-      - install -Dm644 io.github.sudomastery.STube.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo
+      - install -Dm644 io.github.sudomastery.stube_pro.desktop -t ${FLATPAK_DEST}/share/applications
+      - install -Dm644 io.github.sudomastery.stube_pro.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo
       - for s in 32 64 128 256 512; do install -Dm644 icons/stube-${s}.png
-        ${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/apps/io.github.sudomastery.STube.png; done
+        ${FLATPAK_DEST}/share/icons/hicolor/${s}x${s}/apps/io.github.sudomastery.stube_pro.png; done
     sources:
       - type: git
-        url: https://github.com/sudomastery/stube.git
-        tag: v1.0.1
+        url: https://github.com/sudomastery/stube-pro.git
+        tag: v1.0.2

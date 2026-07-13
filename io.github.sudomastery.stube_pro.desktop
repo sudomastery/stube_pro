@@ -2,7 +2,7 @@
 Name=STube
 Comment=Download videos from YouTube and other sites
 Exec=stube
-Icon=io.github.sudomastery.STube
+Icon=io.github.sudomastery.stube_pro
 Terminal=false
 Type=Application
 Categories=AudioVideo;Network;

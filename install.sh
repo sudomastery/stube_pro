@@ -18,14 +18,14 @@ fi
 install -Dm755 stube.py "$HOME/.local/share/stube/stube.py"
 # Point Exec at the absolute launcher path so the app grid entry works
 # regardless of the session's PATH.
-sed "s|^Exec=stube|Exec=$HOME/.local/bin/stube|" io.github.sudomastery.STube.desktop \
-    > "$HOME/.local/share/applications/io.github.sudomastery.STube.desktop"
+sed "s|^Exec=stube|Exec=$HOME/.local/bin/stube|" io.github.sudomastery.stube_pro.desktop \
+    > "$HOME/.local/share/applications/io.github.sudomastery.stube_pro.desktop"
 for png in icons/stube-*.png; do
     size=$(basename "$png" .png | cut -d- -f2)
     # hicolor has no 1024x1024 directory; skip that size.
     [ "$size" = 1024 ] && continue
     install -Dm644 "$png" \
-        "$HOME/.local/share/icons/hicolor/${size}x${size}/apps/io.github.sudomastery.STube.png"
+        "$HOME/.local/share/icons/hicolor/${size}x${size}/apps/io.github.sudomastery.stube_pro.png"
 done
 
 # Convenience launcher on PATH

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.sudomastery.STube</id>
+  <id>io.github.sudomastery.stube_pro</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <name>STube</name>
@@ -19,10 +19,10 @@
       or Firefox). Cookies never leave your machine.
     </p>
   </description>
-  <launchable type="desktop-id">io.github.sudomastery.STube.desktop</launchable>
-  <url type="homepage">https://github.com/sudomastery/stube</url>
-  <url type="bugtracker">https://github.com/sudomastery/stube/issues</url>
-  <url type="vcs-browser">https://github.com/sudomastery/stube</url>
+  <launchable type="desktop-id">io.github.sudomastery.stube_pro.desktop</launchable>
+  <url type="homepage">https://github.com/sudomastery/stube-pro</url>
+  <url type="bugtracker">https://github.com/sudomastery/stube-pro/issues</url>
+  <url type="vcs-browser">https://github.com/sudomastery/stube-pro</url>
   <developer id="io.github.sudomastery">
     <name>sudomastery</name>
   </developer>
@@ -33,7 +33,7 @@
   <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/sudomastery/stube/main/screenshots/main.png</image>
+      <image>https://raw.githubusercontent.com/sudomastery/stube-pro/main/screenshots/main.png</image>
       <caption>Main window with the download queue</caption>
     </screenshot>
   </screenshots>
@@ -42,6 +42,11 @@
     <category>Network</category>
   </categories>
   <releases>
+    <release version="1.0.2" date="2026-07-13">
+      <description>
+        <p>New application ID for Flathub. No functional changes.</p>
+      </description>
+    </release>
     <release version="1.0.1" date="2026-07-05"/>
     <release version="1.0.0" date="2026-07-04"/>
   </releases>

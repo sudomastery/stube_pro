@@ -3,7 +3,7 @@ Version:        1.0.1
 Release:        1%{?dist}
 Summary:        Dark-mode GTK4 downloader for YouTube and 1800+ sites (yt-dlp GUI)
 License:        MIT
-URL:            https://github.com/sudomastery/stube
+URL:            https://github.com/sudomastery/stube-pro
 Source0:        %{url}/archive/v%{version}/stube-%{version}.tar.gz
 BuildArch:      noarch
 
@@ -31,14 +31,14 @@ Firefox to get past bot checks.
 
 %install
 install -Dm644 stube.py %{buildroot}%{_datadir}/stube/stube.py
-install -Dm644 io.github.sudomastery.STube.desktop %{buildroot}%{_datadir}/applications/io.github.sudomastery.STube.desktop
+install -Dm644 io.github.sudomastery.stube_pro.desktop %{buildroot}%{_datadir}/applications/io.github.sudomastery.stube_pro.desktop
 for png in icons/stube-*.png; do
     size=$(basename "$png" .png | cut -d- -f2)
     # hicolor has no 1024x1024 directory; skip that size.
     [ "$size" = 1024 ] && continue
-    install -Dm644 "$png" %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/io.github.sudomastery.STube.png
+    install -Dm644 "$png" %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/io.github.sudomastery.stube_pro.png
 done
-install -Dm644 io.github.sudomastery.STube.metainfo.xml %{buildroot}%{_metainfodir}/io.github.sudomastery.STube.metainfo.xml
+install -Dm644 io.github.sudomastery.stube_pro.metainfo.xml %{buildroot}%{_metainfodir}/io.github.sudomastery.stube_pro.metainfo.xml
 
 install -d %{buildroot}%{_bindir}
 cat > %{buildroot}%{_bindir}/stube <<'EOF'
@@ -48,17 +48,17 @@ EOF
 chmod 755 %{buildroot}%{_bindir}/stube
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.sudomastery.STube.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.sudomastery.STube.metainfo.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.sudomastery.stube_pro.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.sudomastery.stube_pro.metainfo.xml
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/stube
 %{_datadir}/stube/
-%{_datadir}/applications/io.github.sudomastery.STube.desktop
-%{_datadir}/icons/hicolor/*/apps/io.github.sudomastery.STube.png
-%{_metainfodir}/io.github.sudomastery.STube.metainfo.xml
+%{_datadir}/applications/io.github.sudomastery.stube_pro.desktop
+%{_datadir}/icons/hicolor/*/apps/io.github.sudomastery.stube_pro.png
+%{_metainfodir}/io.github.sudomastery.stube_pro.metainfo.xml
 
 %changelog
 * Sun Jul 05 2026 sudomastery <koigu80@gmail.com> - 1.0.1-1
