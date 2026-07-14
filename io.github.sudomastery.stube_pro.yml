@@ -35,6 +35,40 @@ modules:
         url: https://files.pythonhosted.org/packages/47/d8/a29e4e3991765e7ce4ed1f7e4074fe1ba9da03e0048639734de60f9cadb9/mutagen-1.48.1-py3-none-any.whl
         sha256: 4f077fe87d3fc7fba259aa63d8c026b18382ca6a42ef37c61e16f1b1b5b82fe7
 
+  # decrypts Chromium-based browser cookies stored with the GNOME keyring
+  - name: python3-secretstorage
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+        --prefix=${FLATPAK_DEST} --no-build-isolation --no-deps secretstorage jeepney
+        cryptography cffi pycparser
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/b7/46/f5af3402b579fd5e11573ce652019a67074317e18c1935cc0b4ba9b35552/secretstorage-3.5.0-py3-none-any.whl
+        sha256: 0ce65888c0725fcb2c5bc0fdb8e5438eece02c523557ea40ce0703c266248137
+      - type: file
+        url: https://files.pythonhosted.org/packages/b2/a3/e137168c9c44d18eff0376253da9f1e9234d0239e0ee230d2fee6cea8e55/jeepney-0.9.0-py3-none-any.whl
+        sha256: 97e5714520c16fc0a45695e5365a2e11b81ea79bba796e26f9f1d178cb182683
+      - type: file
+        only-arches: [x86_64]
+        url: https://files.pythonhosted.org/packages/b8/7b/62cbbab75d0659865bf0273790031544a0b16c8072d258f9428dcd8190dc/cryptography-49.0.0-cp39-abi3-manylinux_2_28_x86_64.whl
+        sha256: 6f2debedf9ca60cf1d5bd466475638af5130f89965605cd818484d19987d3a21
+      - type: file
+        only-arches: [aarch64]
+        url: https://files.pythonhosted.org/packages/a5/4d/9c0cd02f95e2602dd5e563da149ee0830abef3537be8b34dc56281ebe27a/cryptography-49.0.0-cp39-abi3-manylinux_2_28_aarch64.whl
+        sha256: 0f21641cf4b30fca7aee061ced0ec7ad7b073518088b7c9969a297c0ae796c69
+      - type: file
+        only-arches: [x86_64]
+        url: https://files.pythonhosted.org/packages/6f/08/f2e7d62c460faae0926f2d6e423694aa409ced3bc1fe2927a0a6e5f05416/cffi-2.1.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+        sha256: 799416bae98336e400981ff6e532d67d5c709cfb30afb79865a1315f94b0e224
+      - type: file
+        only-arches: [aarch64]
+        url: https://files.pythonhosted.org/packages/3a/a6/e879bb68cc23a2bc9ba8f4b7d8019f0c2694bad2ab6c4a3701d429439f58/cffi-2.1.0-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
+        sha256: ff067a8d8d880e7809e4ac88eb009bb848870115317b306666502ccad30b147f
+      - type: file
+        url: https://files.pythonhosted.org/packages/0c/c3/44f3fbbfa403ea2a7c779186dc20772604442dde72947e7d01069cbe98e3/pycparser-3.0-py3-none-any.whl
+        sha256: b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992
+
   # JavaScript runtime required by yt-dlp to solve YouTube's player challenges
   - name: deno
     buildsystem: simple
@@ -63,5 +97,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/sudomastery/stube_pro.git
-        tag: v1.0.5
-        commit: b9d6902a29c88256b960ba9052dba073e126ccab
+        tag: v1.0.6

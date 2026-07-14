@@ -20,7 +20,7 @@ from yt_dlp.cookies import extract_cookies_from_browser  # noqa: E402
 
 APP_ID = "io.github.sudomastery.stube_pro"
 APP_NAME = "STube"
-APP_VERSION = "1.0.5"
+APP_VERSION = "1.0.6"
 ACCENT = "#E2603F"
 COFFEE_URL = "https://ko-fi.com/sudomastery"
 MAX_CONCURRENT = 3
@@ -42,6 +42,28 @@ BROWSERS = [
     ("Edge", "edge", "~/.config/microsoft-edge"),
     ("Firefox", "firefox", "~/.mozilla/firefox"),
 ]
+
+# Where each Chromium-based browser keeps its profile on the host.
+CHROMIUM_PROFILE_DIRS = {
+    "brave": "~/.config/BraveSoftware/Brave-Browser",
+    "chrome": "~/.config/google-chrome",
+    "chromium": "~/.config/chromium",
+    "edge": "~/.config/microsoft-edge",
+}
+
+IN_FLATPAK = os.path.exists("/.flatpak-info")
+
+
+def browser_profile(key):
+    """Profile path override for yt-dlp, or None for its default.
+
+    Inside the Flatpak sandbox XDG_CONFIG_HOME points at the app's own
+    config dir, so yt-dlp would search there and miss the host browser
+    profiles that the sandbox mounts read-only under ~/.config.
+    """
+    if IN_FLATPAK and key in CHROMIUM_PROFILE_DIRS:
+        return os.path.expanduser(CHROMIUM_PROFILE_DIRS[key])
+    return None
 
 VIDEO_QUALITIES = [
     ("Best Available", "bv*+ba/b"),
@@ -195,7 +217,7 @@ class Cancelled(Exception):
 def test_browser_cookies(key):
     """True if the browser has readable YouTube/Google cookies."""
     try:
-        jar = extract_cookies_from_browser(key)
+        jar = extract_cookies_from_browser(key, browser_profile(key))
         return any("youtube" in (c.domain or "") or
                    "google" in (c.domain or "") for c in jar)
     except Exception:
@@ -359,7 +381,8 @@ class DownloadManager:
             "socket_timeout": 30,
         }
         if job.get("browser"):
-            opts["cookiesfrombrowser"] = (job["browser"],)
+            opts["cookiesfrombrowser"] = (
+                job["browser"], browser_profile(job["browser"]))
 
         fmt = job["fmt"]                        # "mp4" | "mp3" | "wav"
         if fmt == "mp4":
