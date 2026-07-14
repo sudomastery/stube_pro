@@ -42,6 +42,11 @@
     <category>Network</category>
   </categories>
   <releases>
+    <release version="1.0.8" date="2026-07-14">
+      <description>
+        <p>The bottom feature cards now share a uniform width.</p>
+      </description>
+    </release>
     <release version="1.0.7" date="2026-07-14">
       <description>
         <p>Fix cookie decryption on KDE Plasma and restore full video quality selection by bundling the yt-dlp challenge solver.</p>

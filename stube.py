@@ -21,7 +21,7 @@ from yt_dlp.cookies import extract_cookies_from_browser  # noqa: E402
 
 APP_ID = "io.github.sudomastery.stube_pro"
 APP_NAME = "STube"
-APP_VERSION = "1.0.7"
+APP_VERSION = "1.0.8"
 ACCENT = "#E2603F"
 COFFEE_URL = "https://ko-fi.com/sudomastery"
 MAX_CONCURRENT = 3
@@ -162,6 +162,7 @@ headerbar {{ background-color: #262322; box-shadow: none; }}
         #383331; border-radius: 13px; padding: 6px 12px; color: #efeae6; }}
 .cards-strip {{ background-color: #232120; border-top: 1px solid #2e2a28; }}
 .feature-card {{ background: none; border-radius: 0; padding: 22px 12px; }}
+.card-divided {{ border-left: 1px solid #2e2a28; }}
 .feature-card:hover {{ background-color: alpha(#ffffff, 0.03); }}
 .icon-circle {{ border: 1px solid #453f3c; border-radius: 9999px; }}
 .icon-circle.bad {{ border-color: #8a3b33; }}
@@ -752,7 +753,7 @@ class MainWindow(Adw.ApplicationWindow):
         outer.append(clamp)
 
         # ---- feature cards strip ----
-        strip = Gtk.Box(css_classes=["cards-strip"])
+        strip = Gtk.Box(css_classes=["cards-strip"], homogeneous=True)
         self.cookie_card = FeatureCard(
             "content-loading-symbolic", "icon-green", "Cookies Setup",
             "Import browser cookies to download private or "
@@ -765,18 +766,13 @@ class MainWindow(Adw.ApplicationWindow):
             "☕", "icon-orange", "Buy Coffee",
             "Support development and keep the downloads flowing.",
             self.on_coffee)
+        self.downloads_card.add_css_class("card-divided")
+        self.coffee_card.add_css_class("card-divided")
         strip.append(self.cookie_card)
-        strip.append(Gtk.Separator(orientation=Gtk.Orientation.VERTICAL,
-                                   margin_top=24, margin_bottom=24))
         strip.append(self.downloads_card)
-        self._coffee_sep = Gtk.Separator(
-            orientation=Gtk.Orientation.VERTICAL,
-            margin_top=24, margin_bottom=24)
-        strip.append(self._coffee_sep)
         strip.append(self.coffee_card)
         self._strip = strip
         if self.settings.get("coffee_hidden"):
-            strip.remove(self._coffee_sep)
             strip.remove(self.coffee_card)
         outer.append(strip)
 
@@ -951,7 +947,6 @@ class MainWindow(Adw.ApplicationWindow):
         def on_never(_b):
             self.settings["coffee_hidden"] = True
             save_json(SETTINGS_FILE, self.settings)
-            self._strip.remove(self._coffee_sep)
             self._strip.remove(self.coffee_card)
             dialog.close()
             self.toast("Okay, the coffee button is gone for good")
