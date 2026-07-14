@@ -42,6 +42,11 @@
     <category>Network</category>
   </categories>
   <releases>
+    <release version="1.0.9" date="2026-07-14">
+      <description>
+        <p>Fix the missing icon on desktop notifications.</p>
+      </description>
+    </release>
     <release version="1.0.8" date="2026-07-14">
       <description>
         <p>The bottom feature cards now share a uniform width.</p>

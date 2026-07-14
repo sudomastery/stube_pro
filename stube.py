@@ -21,7 +21,7 @@ from yt_dlp.cookies import extract_cookies_from_browser  # noqa: E402
 
 APP_ID = "io.github.sudomastery.stube_pro"
 APP_NAME = "STube"
-APP_VERSION = "1.0.8"
+APP_VERSION = "1.0.9"
 ACCENT = "#E2603F"
 COFFEE_URL = "https://ko-fi.com/sudomastery"
 MAX_CONCURRENT = 3
@@ -899,7 +899,7 @@ class MainWindow(Adw.ApplicationWindow):
     def notify_desktop(self, title, body):
         n = Gio.Notification.new(title)
         n.set_body(body)
-        n.set_icon(Gio.ThemedIcon.new("stube"))
+        n.set_icon(Gio.ThemedIcon.new(APP_ID))
         self.get_application().send_notification(None, n)
 
     # ------------------------------------------------------------ coffee

@@ -1,5 +1,5 @@
 Name:           stube
-Version:        1.0.8
+Version:        1.0.9
 Release:        1%{?dist}
 Summary:        Dark-mode GTK4 downloader for YouTube and 1800+ sites (yt-dlp GUI)
 License:        MIT
@@ -61,6 +61,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.sudo
 %{_metainfodir}/io.github.sudomastery.stube_pro.metainfo.xml
 
 %changelog
+* Tue Jul 14 2026 sudomastery <koigu80@gmail.com> - 1.0.9-1
+- Fix the missing icon on desktop notifications
+
 * Tue Jul 14 2026 sudomastery <koigu80@gmail.com> - 1.0.8-1
 - Uniform width for the bottom feature cards
 
