@@ -1,5 +1,5 @@
 Name:           stube
-Version:        1.0.6
+Version:        1.0.7
 Release:        1%{?dist}
 Summary:        Dark-mode GTK4 downloader for YouTube and 1800+ sites (yt-dlp GUI)
 License:        MIT
@@ -61,6 +61,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/io.github.sudo
 %{_metainfodir}/io.github.sudomastery.stube_pro.metainfo.xml
 
 %changelog
+* Tue Jul 14 2026 sudomastery <koigu80@gmail.com> - 1.0.7-1
+- Fix cookie decryption on KDE Plasma (read the key from KWallet over D-Bus)
+- Bundle the yt-dlp EJS challenge solver so all video qualities are available
+
 * Tue Jul 14 2026 sudomastery <koigu80@gmail.com> - 1.0.6-1
 - Fix browser cookie import when running as a Flatpak
 

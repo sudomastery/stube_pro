@@ -20,17 +20,23 @@ finish-args:
   - --filesystem=~/.mozilla:ro
   # decrypting Chromium-based browser cookies needs the keyring
   - --talk-name=org.freedesktop.secrets
+  # on KDE the cookie key lives in KWallet instead
+  - --talk-name=org.kde.kwalletd6
+  - --talk-name=org.kde.kwalletd5
 
 modules:
   - name: python3-yt-dlp
     buildsystem: simple
     build-commands:
       - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} --no-build-isolation --no-deps yt-dlp mutagen
+        --prefix=${FLATPAK_DEST} --no-build-isolation --no-deps yt-dlp yt-dlp-ejs mutagen
     sources:
       - type: file
         url: https://files.pythonhosted.org/packages/f3/ee/188a3dadf9dfdac713243521f919feca1cd091d4358c9ea7e8ebb710a7cc/yt_dlp-2026.6.9-py3-none-any.whl
         sha256: 442ba4c75724b9496144c8434b617962ee08d0ee7c26ec663848fe9b78d5a3e4
+      - type: file
+        url: https://files.pythonhosted.org/packages/e3/bd/520769863744b669440a924271a6159ddd82ad5ae26b4ac4d4b69e9f8d44/yt_dlp_ejs-0.8.0-py3-none-any.whl
+        sha256: 79300e5fca7f937a1eeede11f0456862c1b41107ce1d726871e0207424f4bdb4
       - type: file
         url: https://files.pythonhosted.org/packages/47/d8/a29e4e3991765e7ce4ed1f7e4074fe1ba9da03e0048639734de60f9cadb9/mutagen-1.48.1-py3-none-any.whl
         sha256: 4f077fe87d3fc7fba259aa63d8c026b18382ca6a42ef37c61e16f1b1b5b82fe7
@@ -97,5 +103,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/sudomastery/stube_pro.git
-        tag: v1.0.6
-        commit: be84d2778468162ce8c1833df7d7291b1abcf776
+        tag: v1.0.7

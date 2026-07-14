@@ -3,6 +3,7 @@
 
 import json
 import os
+import shutil
 import subprocess
 import threading
 import time
@@ -20,7 +21,7 @@ from yt_dlp.cookies import extract_cookies_from_browser  # noqa: E402
 
 APP_ID = "io.github.sudomastery.stube_pro"
 APP_NAME = "STube"
-APP_VERSION = "1.0.6"
+APP_VERSION = "1.0.7"
 ACCENT = "#E2603F"
 COFFEE_URL = "https://ko-fi.com/sudomastery"
 MAX_CONCURRENT = 3
@@ -64,6 +65,47 @@ def browser_profile(key):
     if IN_FLATPAK and key in CHROMIUM_PROFILE_DIRS:
         return os.path.expanduser(CHROMIUM_PROFILE_DIRS[key])
     return None
+
+
+def _kwallet_password_dbus(browser_keyring_name, keyring, logger):
+    """Fetch the Chromium cookie key from KWallet over D-Bus.
+
+    On KDE, yt-dlp shells out to kwallet-query for this, but that binary
+    is not available inside the Flatpak, so talk to the wallet daemon
+    directly with jeepney.
+    """
+    from jeepney import DBusAddress, new_method_call
+    from jeepney.io.blocking import open_dbus_connection
+    daemon = keyring.name.lower().replace("kwallet", "kwalletd")
+    addr = DBusAddress(f"/modules/{daemon}", bus_name=f"org.kde.{daemon}",
+                       interface="org.kde.KWallet")
+    try:
+        conn = open_dbus_connection(bus="SESSION")
+    except Exception as e:
+        logger.warning(f"could not connect to the session bus: {e}")
+        return b""
+    try:
+        wallet = conn.send_and_get_reply(
+            new_method_call(addr, "networkWallet")).body[0]
+        handle = conn.send_and_get_reply(new_method_call(
+            addr, "open", "sxs", (wallet, 0, APP_NAME))).body[0]
+        if handle < 0:
+            logger.warning(f"KWallet denied access to {wallet}")
+            return b""
+        password = conn.send_and_get_reply(new_method_call(
+            addr, "readPassword", "isss",
+            (handle, f"{browser_keyring_name} Keys",
+             f"{browser_keyring_name} Safe Storage", APP_NAME))).body[0]
+        return password.encode() if password else b""
+    except Exception as e:
+        logger.warning(f"failed to read the KWallet password: {e}")
+        return b""
+    finally:
+        conn.close()
+
+
+if IN_FLATPAK and not shutil.which("kwallet-query"):
+    yt_dlp.cookies._get_kwallet_password = _kwallet_password_dbus
 
 VIDEO_QUALITIES = [
     ("Best Available", "bv*+ba/b"),
