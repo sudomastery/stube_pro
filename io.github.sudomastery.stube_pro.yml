@@ -64,3 +64,4 @@ modules:
       - type: git
         url: https://github.com/sudomastery/stube_pro.git
         tag: v1.0.4
+        commit: e4d6fcd3b952837ff2253bc98b235bc33d852fdd
