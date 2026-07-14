@@ -312,6 +312,7 @@ class DownloadManager:
         def hook(d):
             if ui.is_cancelled():
                 raise Cancelled()
+            ui.set_title((d.get("info_dict") or {}).get("title"))
             if d["status"] == "downloading":
                 now = time.monotonic()
                 if now - last[0] < 0.15:       # throttle UI updates
@@ -498,6 +499,13 @@ class RowUI:
 
     def is_cancelled(self):
         return self.row.cancelled
+
+    def set_title(self, title):
+        """Swap the row label from the URL to the real video title."""
+        if not title or title == self.title:
+            return
+        self.title = title
+        GLib.idle_add(self.row.title_label.set_label, title)
 
     def status(self, text):
         GLib.idle_add(self.row.status.set_label, text)
