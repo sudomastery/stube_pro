@@ -20,6 +20,7 @@ from yt_dlp.cookies import extract_cookies_from_browser  # noqa: E402
 
 APP_ID = "io.github.sudomastery.stube_pro"
 APP_NAME = "STube"
+APP_VERSION = "1.0.5"
 ACCENT = "#E2603F"
 COFFEE_URL = "https://ko-fi.com/sudomastery"
 MAX_CONCURRENT = 3
@@ -863,6 +864,11 @@ class MainWindow(Adw.ApplicationWindow):
             wrap=True, justify=Gtk.Justification.CENTER,
             halign=Gtk.Align.CENTER, css_classes=["dim"])
         box.append(msg)
+
+        version = Gtk.Label(label=f"{APP_NAME} {APP_VERSION}",
+                            halign=Gtk.Align.CENTER,
+                            css_classes=["dim-label", "caption"])
+        box.append(version)
 
         buy = Gtk.Button(label="Buy Coffee",
                          css_classes=["download-btn"],
